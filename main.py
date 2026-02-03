@@ -93,11 +93,7 @@ def process_transaction(user, action, value, is_vault=False, is_fine=False):
     st.rerun()
 
 # --- 🖥️ INTERFACE ---
-try:
-    df_bal, df_hist = get_data()
-except Exception as e:
-    st.error("⚠️ Database connecting... please refresh in 10s.")
-    st.stop()
+df_bal, df_hist = get_data()
 
 week_num, parent_turn, kid_turn = get_week_info()
 house_pot = df_bal.loc[df_bal['User'] == 'House_Pot', 'Balance'].values[0]
